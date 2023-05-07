@@ -33,3 +33,7 @@ jobs:
     - name: Run `packer init`
       id: init
       run: "packer init ./packer/windows.pkr.hcl"      
+    
+    - name: Build `packer build`
+      id: build
+      run: "packer build ./packer/windows.pkr.hcl"      
