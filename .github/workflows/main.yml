@@ -21,24 +21,22 @@ jobs:
       run: dotnet restore
 
     - name: Build the project
-      run: dotnet build -c Release -o /app/build
+      run: dotnet build -c Release -o ./app/build
 
     - name: Test the project
       run: dotnet test
     
     - name: Publish the project
-      run : dotnet publish -c Release -o /app/publis
+      run : dotnet publish -c Release -o ./app/publis
 
-    - run: dir
-    
     - name: Setup `packer`
       uses: hashicorp/setup-packer@main
       id: setup
 
     - name: Run `packer init`
       id: init
-      run: "packer init ./packer/windows.pkr.hcl"      
+      run: packer init ./packer/windows.pkr.hcl      
     
     - name: Build `packer build`
       id: build
-      run: "packer build ./packer/windows.pkr.hcl"      
+      run: packer build -debug ./packer/windows.pkr.hcl     
