@@ -39,4 +39,4 @@ jobs:
     
     - name: Build `packer build`
       id: build
-      run: packer build -debug ./packer/windows.pkr.hcl     
+      run: packer build ./packer/windows.pkr.hcl     
