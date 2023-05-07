@@ -25,3 +25,11 @@ jobs:
 
     - name: Test the project
       run: dotnet test
+
+    - name: Setup `packer`
+      uses: hashicorp/setup-packer@main
+      id: setup
+
+    - name: Run `packer init`
+      id: init
+      run: "packer init ./packer/windows.pkr.hcl"      
