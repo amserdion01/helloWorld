@@ -13,16 +13,13 @@ source "docker" "windows" {
   run_command = ["-v", "C:\\packer-files:C:\\packer-files", "-i", "-t", "{{.Image}}", "{{if .User}}--user={{.User}}{{end}}", "{{.Shell}}"]
 }
 
-
-
 build {
-  name    = "learn-packer"
+  name    = "prerequisite"
   sources = [
     "source.docker.windows"
   ]
 
-
- provisioner "powershell" {
+  provisioner "powershell" {
     inline = [
       # Download the .NET installation script
       "Invoke-WebRequest -Uri 'https://dot.net/v1/dotnet-install.ps1' -OutFile 'dotnet-install.ps1'",

@@ -33,10 +33,18 @@ jobs:
       uses: hashicorp/setup-packer@main
       id: setup
 
-    - name: Run `packer init`
-      id: init
-      run: packer init ./packer/windows.pkr.hcl      
-    
-    - name: Build `packer build`
-      id: build
-      run: packer build ./packer/windows.pkr.hcl     
+    - name: Run `packer init` for prerequisite image
+      id: init-prerequisite
+      run: packer init ./packer/prerequisite.pkr.hcl
+
+    - name: Build `packer build` for prerequisite image
+      id: build-prerequisite
+      run: packer build ./packer/prerequisite.pkr.hcl
+
+    - name: Run `packer init` for application image
+      id: init-application
+      run: packer init ./packer/application.pkr.hcl
+
+    - name: Build `packer build` for application image
+      id: build-application
+      run: packer build ./packer/application.pkr.hc
