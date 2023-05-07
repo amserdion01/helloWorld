@@ -10,7 +10,9 @@ packer {
 source "docker" "windows" {
   image  = "mcr.microsoft.com/windows/server:ltsc2022"
   commit = true
+  run_command = ["-v", "C:\\packer-files:C:\\packer-files", "-i", "-t", "{{.Image}}", "{{if .User}}--user={{.User}}{{end}}", "{{.Shell}}"]
 }
+
 
 
 build {
